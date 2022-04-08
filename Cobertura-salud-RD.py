@@ -7,10 +7,8 @@ Created on Sun Apr  3 11:11:32 2022
 
 import streamlit as st
 import pandas as pd
-import pydeck as pdk
 import plotly.express as px
 import plotly.graph_objects as go
-import base64
 from plotly.subplots import make_subplots
 import numpy as np
 ##############################################################################################################################################################
@@ -243,12 +241,17 @@ st.plotly_chart(fig)
 st.markdown("<h4 style = 'text-align:center;color:red;'> Cantidad de Especialidades solicitada por mes de los últimos 3 años \n\n Elija el gráfico de su preferencia</h4>", unsafe_allow_html=True)
 
 # sacar los datos para analziar
-cober2018_espe = cober2018[['Especialidad','Mes']].groupby(['Mes'])[['Especialidad']].count().reset_index()
+cober2018_espe = cober2018[['Especialidad','Mes']]
+cober2018_espe = cober2018_espe.groupby(['Mes'])[['Especialidad']].count().reset_index()
 cober2018_espe = orden_mes(cober2018_espe)
-cober2019_espe = cober2019[['Especialidad','Mes']].groupby(['Mes'])[['Especialidad']].count().reset_index()
+
+cober2019_espe = cober2019[['Especialidad','Mes']]
+cober2019_espe = cober2019_espe.groupby(['Mes'])[['Especialidad']].count().reset_index()
 cober2019_espe = orden_mes(cober2019_espe)
-cober2020_espe = cober2020[['Especialidad','Mes']].groupby(['Mes'])[['Especialidad']].count().reset_index()
-cober2020_espe = orden_mes(cober2020_espe)
+
+cober2020_espe = cober2020[['Especialidad','Mes']]
+cober2020_espe  = cober2020_espe .groupby(['Mes'])[['Especialidad']].count().reset_index()
+cober2020_espe  = orden_mes(cober2020_espe )
 
 
 st.markdown("<h5 style = 'text-align:center;color:white;'> Año 2018 </h5>", unsafe_allow_html=True)
@@ -297,7 +300,7 @@ if c1.checkbox('Gráfico de torta 2020',True):
     fig = go.Figure()
     fig.add_trace(go.Pie(labels = base['Mes'], values = base['Especialidad'], pull=[0.2, 0.2, 0, 0,0, 0, 0, 0,0, 0, 0, 0]))
     fig.update_layout(template = 'simple_white',legend=dict(yanchor="top",y=0.9,xanchor="left",x=-0.1),
-                      title_text = '<b>Porcentaje de especialidades solicitadas por mes en 2018<b>',title_x = 0.5)
+                      title_text = '<b>Porcentaje de especialidades solicitadas por mes en 2020<b>',title_x = 0.5)
     fig.update_traces(marker=dict(colors=['#FD3216', '#00FE35', '#6A76FC', '#FED4C4', '#FE00CE', '#0DF9FF', '#F6F926', '#FF9616', '#479B55', '#EEA6FB', '#DC587D', '#D626FF']))
     c1.plotly_chart(fig)
 # se definide gráfico de barras
