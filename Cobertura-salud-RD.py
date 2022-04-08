@@ -183,7 +183,7 @@ cober2019_valor = cober2019.groupby(['Provincia'])[['Valor Autorizado (RD$)']].s
 # 2020
 cober2020_valor = cober2020.groupby(['Provincia'])[['Valor Autorizado (RD$)']].sum().reset_index().sort_values('Valor Autorizado (RD$)', ascending = False).rename(columns = {'Valor Autorizado (RD$)':'2020'}).head(6)
 
-provincias = pd.DataFrame({'Provincia':['DISTRITO NACIONAL','SANTO DOMINGO','SANTIAGO DE LOS CABALLEROS','SAN CRISTOBAL','DUARTE','LA VEGA']})
+provincias = pd.DataFrame({'Provincia':['SANTO DOMINGO','DISTRITO NACIONAL','SANTIAGO DE LOS CABALLEROS','SAN CRISTOBAL','LA VEGA','DUARTE']})
 
 df1 = unir(provincias, cober2015_valor)
 df2 = unir(df1, cober2016_valor)
