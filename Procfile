@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run tercera_entrega.py
+web: sh setup.sh && streamlit run Cobertura-salud-RD.py
